@@ -9,8 +9,8 @@ public class Word {
 	/** The word string. */
 	private String word;
 	
-	/** The word's key. */
-	private int key;
+	/** The next word in the linked structure. */
+	private Word next;
 	
 	/**
 	 * Constructs a Word object.
@@ -19,6 +19,7 @@ public class Word {
 	public Word(String word) {
 		
 		this.word = word;
+		this.next = null;
 	}
 	
 	/**
@@ -29,27 +30,40 @@ public class Word {
 		
 		return this.word;
 	}
+	
+	/**
+	 * Sets the string in a Word.
+	 */
+	public void setWord(String word) {
+		
+		this.word = word;
+	}
 
 	/**
-	 * Gets the key of a Word.
-	 * @return The Word's key.
+	 * Gets the Word's next Word.
+	 * @return The Word's next Word.
 	 */
-	public int getKey() {
+	public Word getNext() {
 		
-		return this.key;
+		return this.next;
 	}
 	
+	/**
+	 * Sets the Word's next Word.
+	 */
+	public void setNext(Word next) {
+		
+		this.next = next;
+	}
+
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
 	public int hashCode() {
-		
-		int hash = 7;
-		for (int i = 0; i < word.length(); i++) {
-		    hash = hash * 31 + word.charAt(i);
-		}
-		
-		return hash;
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((word == null) ? 0 : word.hashCode());
+		return result;
 	}
 }
