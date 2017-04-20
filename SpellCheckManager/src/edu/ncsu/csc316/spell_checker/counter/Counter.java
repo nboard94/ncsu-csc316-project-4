@@ -62,13 +62,13 @@ public class Counter {
 	}
 
 	/**
-	 * Sets the dictionaryCount.
+	 * Increment the dictionaryCount.
 	 * 
 	 * @param dictionaryCount
-	 *            the dictionaryCount to set
+	 *            the dictionaryCount to Increment
 	 */
-	public void setDictionaryCount(int dictionaryCount) {
-		this.dictionaryCount = dictionaryCount;
+	public void incrementDictionaryCount() {
+		this.dictionaryCount++;
 	}
 
 	/**
@@ -81,13 +81,13 @@ public class Counter {
 	}
 
 	/**
-	 * Sets the inputCount.
+	 * Increment the inputCount.
 	 * 
 	 * @param inputCount
-	 *            the inputCount to set
+	 *            the inputCount to increment
 	 */
-	public void setInputCount(int inputCount) {
-		this.inputCount = inputCount;
+	public void incrementInputCount() {
+		this.inputCount++;
 	}
 
 	/**
@@ -100,13 +100,13 @@ public class Counter {
 	}
 
 	/**
-	 * Sets the misspelled.
+	 * Increment the misspelled.
 	 * 
 	 * @param misspelled
-	 *            the misspelled to set
+	 *            the misspelled to increment
 	 */
-	public void setMisspelled(int misspelled) {
-		this.misspelled = misspelled;
+	public void incrementMisspelled() {
+		this.misspelled++;
 	}
 
 	/**
@@ -138,13 +138,13 @@ public class Counter {
 	}
 
 	/**
-	 * Sets the totalProbes.
+	 * Increment the totalProbes.
 	 * 
 	 * @param totalProbes
-	 *            the totalProbes to set
+	 *            the totalProbes to increment
 	 */
-	public void setTotalProbes(int totalProbes) {
-		this.totalProbes = totalProbes;
+	public void incrementTotalProbes() {
+		this.totalProbes++;
 	}
 
 	/**
@@ -157,13 +157,13 @@ public class Counter {
 	}
 
 	/**
-	 * Sets the totalLookUps.
+	 * Increment the totalLookUps.
 	 * 
 	 * @param totalLookUps
-	 *            the totalLookUps to set
+	 *            the totalLookUps to increment
 	 */
-	public void setTotalLookUps(int totalLookUps) {
-		this.totalLookUps = totalLookUps;
+	public void incrementTotalLookUps() {
+		this.totalLookUps++;
 	}
 
 	/**

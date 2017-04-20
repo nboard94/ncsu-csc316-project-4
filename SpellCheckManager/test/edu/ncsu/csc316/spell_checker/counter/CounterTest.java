@@ -24,28 +24,28 @@ public class CounterTest {
 		assertEquals(0, counter.getAvgProbesPerWord());
 		assertEquals(0, counter.getAvgProbesPerLookUp());
 		
-		counter.setDictionaryCount(200);
-		assertEquals(200, counter.getDictionaryCount());
+		counter.incrementDictionaryCount();
+		assertEquals(1, counter.getDictionaryCount());
 		
-		counter.setInputCount(50);
-		assertEquals(50, counter.getInputCount());
+		counter.incrementInputCount();
+		assertEquals(1, counter.getInputCount());
 		
-		counter.setMisspelled(151);
-		assertEquals(151, counter.getMisspelled());
+		counter.incrementMisspelled();
+		assertEquals(1, counter.getMisspelled());
 		
 		counter.addMisspelledWord("one");
 		counter.addMisspelledWord("two");
 		counter.addMisspelledWord("three");
 		assertEquals(3, counter.getMisspelledWords().size());
 		
-		counter.setTotalProbes(100);
-		assertEquals(100, counter.getTotalProbes());
+		counter.incrementTotalProbes();
+		assertEquals(1, counter.getTotalProbes());
 		
-		counter.setTotalLookUps(20);
-		assertEquals(20, counter.getTotalLookUps());
+		counter.incrementTotalLookUps();
+		assertEquals(1, counter.getTotalLookUps());
 		
-		assertEquals(2, counter.getAvgProbesPerWord());
-		assertEquals(5, counter.getAvgProbesPerLookUp());
+		assertEquals(1, counter.getAvgProbesPerWord());
+		assertEquals(1, counter.getAvgProbesPerLookUp());
 		
 		counter.resetCounter();
 		assertEquals(0, counter.getDictionaryCount());
