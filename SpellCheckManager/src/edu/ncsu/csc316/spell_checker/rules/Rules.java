@@ -6,6 +6,15 @@ package edu.ncsu.csc316.spell_checker.rules;
  */
 public class Rules {
 
+	
+	/**
+	 * Construct a Rules object so we can access the rule methods.
+	 */
+	public Rules() {
+		
+		// Intentionally left empty.
+	}
+	
 	/**
 	 * If the first letter of a word is capitalized, convert
 	 * the first letter to lowercase.
@@ -15,7 +24,10 @@ public class Rules {
 	 */
 	public String CapitalizationRule(String word) {
 
-		return Character.toLowerCase(word.charAt(0)) + word.substring(0, word.length());
+		if( Character.isUpperCase(word.charAt(0)))
+			return Character.toLowerCase(word.charAt(0)) + word.substring(1, word.length());
+		
+		return word;
 	}
 	
 	/**
@@ -40,7 +52,10 @@ public class Rules {
 	 */
 	public String PluralityRule1(String word) {
 
-		return null;
+		if( word.charAt(word.length() - 1) == 's')
+			return word.substring(0, word.length() - 1);
+		
+		return word;
 	}
 	
 	/**
@@ -51,7 +66,10 @@ public class Rules {
 	 */
 	public String PluralityRule2(String word) {
 
-		return null;
+		if( word.substring(word.length() - 2).equals("es"))
+			return word.substring(0, word.length() - 2);
+		
+		return word;
 	}
 	
 	/**
@@ -62,7 +80,10 @@ public class Rules {
 	 */
 	public String PastTenseRule1(String word) {
 
-		return null;
+		if( word.charAt(word.length() - 1) == 'd')
+			return word.substring(0, word.length() - 1);
+		
+		return word;
 	}
 	
 	/**
@@ -73,7 +94,10 @@ public class Rules {
 	 */
 	public String PastTenseRule2(String word) {
 
-		return null;
+		if( word.substring(word.length() - 2).equals("ed"))
+			return word.substring(0, word.length() - 2);
+		
+		return word;
 	}
 	
 	/**
@@ -84,7 +108,10 @@ public class Rules {
 	 */
 	public String OccupationRule1(String word) {
 
-		return null;
+		if( word.charAt(word.length() - 1) == 'r')
+			return word.substring(0, word.length() - 1);
+		
+		return word;
 	}
 	
 	/**
@@ -95,7 +122,10 @@ public class Rules {
 	 */
 	public String OccupationRule2(String word) {
 
-		return null;
+		if( word.substring(word.length() - 2).equals("er"))
+			return word.substring(0, word.length() - 2);
+		
+		return word;
 	}
 	
 	/**
@@ -106,18 +136,24 @@ public class Rules {
 	 */
 	public String GerundRule1(String word) {
 
-		return null;
+		if( word.substring(word.length() - 3).equals("ing"))
+			return word.substring(0, word.length() - 3);
+		
+		return word;
 	}
 	
 	/**
-	 * If the word ends in ing, drop the in, add an e.
+	 * If the word ends in ing, drop the ing, add an e.
 	 * baking > bake
 	 * @param word The word to change.
 	 * @return The transformed word.
 	 */
 	public String GerundRule2(String word) {
 
-		return null;
+		if( word.substring(word.length() - 3).equals("ing"))
+			return word.substring(0, word.length() - 3) + 'e';
+		
+		return word;
 	}
 	
 	/**
@@ -128,6 +164,9 @@ public class Rules {
 	 */
 	public String AdverbRule(String word) {
 
-		return null;
+		if( word.substring(word.length() - 2).equals("ly"))
+			return word.substring(0, word.length() - 2);
+		
+		return word;
 	}
 }
