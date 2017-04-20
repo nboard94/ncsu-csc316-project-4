@@ -9,6 +9,9 @@ public class Word {
 	/** The word string. */
 	private String word;
 	
+	/** The word's key. */
+	private int key;
+	
 	/**
 	 * Constructs a Word object.
 	 * @param word The word string to set.
@@ -27,6 +30,14 @@ public class Word {
 		return this.word;
 	}
 
+	/**
+	 * Gets the key of a Word.
+	 * @return The Word's key.
+	 */
+	public int getKey() {
+		
+		return this.key;
+	}
 	
 	/* (non-Javadoc)
 	 * @see java.lang.Object#hashCode()
