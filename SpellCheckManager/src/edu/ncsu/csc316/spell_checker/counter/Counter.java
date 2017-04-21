@@ -9,34 +9,34 @@ import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 public class Counter {
 
 	/** The number of words in the dictionary. */
-	private int dictionaryCount;
+	private static int dictionaryCount;
 
 	/** The number of words in the input file. */
-	private int inputCount;
+	private static int inputCount;
 
 	/** The number of words that are misspelled. */
-	private int misspelled;
+	private static int misspelled;
 
 	/** The list of words that are misspelled. */
-	private ArrayBasedList<String> misspelledWords;
+	private static ArrayBasedList<String> misspelledWords;
 
 	/** The number of total probes. */
-	private int totalProbes;
+	private static int totalProbes;
 
 	/** The number of total lookUps. */
-	private int totalLookUps;
+	private static int totalLookUps;
 
 	/**
 	 * Constructs a Counter object, sets all fields to zero.
 	 */
 	public Counter() {
 
-		this.dictionaryCount = 0;
-		this.inputCount = 0;
-		this.misspelled = 0;
-		this.misspelledWords = new ArrayBasedList<String>();
-		this.totalProbes = 0;
-		this.totalLookUps = 0;
+		Counter.dictionaryCount = 0;
+		Counter.inputCount = 0;
+		Counter.misspelled = 0;
+		Counter.misspelledWords = new ArrayBasedList<String>();
+		Counter.totalProbes = 0;
+		Counter.totalLookUps = 0;
 	}
 
 	/**
@@ -44,12 +44,12 @@ public class Counter {
 	 */
 	public void resetCounter() {
 
-		this.dictionaryCount = 0;
-		this.inputCount = 0;
-		this.misspelled = 0;
-		this.misspelledWords = new ArrayBasedList<String>();
-		this.totalProbes = 0;
-		this.totalLookUps = 0;
+		Counter.dictionaryCount = 0;
+		Counter.inputCount = 0;
+		Counter.misspelled = 0;
+		Counter.misspelledWords = new ArrayBasedList<String>();
+		Counter.totalProbes = 0;
+		Counter.totalLookUps = 0;
 	}
 
 	/**
@@ -68,7 +68,7 @@ public class Counter {
 	 *            the dictionaryCount to Increment
 	 */
 	public void incrementDictionaryCount() {
-		this.dictionaryCount++;
+		Counter.dictionaryCount++;
 	}
 
 	/**
@@ -87,7 +87,7 @@ public class Counter {
 	 *            the inputCount to increment
 	 */
 	public void incrementInputCount() {
-		this.inputCount++;
+		Counter.inputCount++;
 	}
 
 	/**
@@ -106,7 +106,7 @@ public class Counter {
 	 *            the misspelled to increment
 	 */
 	public void incrementMisspelled() {
-		this.misspelled++;
+		Counter.misspelled++;
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class Counter {
 	 *            the misspelledWord to add
 	 */
 	public void addMisspelledWord(String misspelledWord) {
-		this.misspelledWords.insert(misspelledWord);
+		Counter.misspelledWords.insert(misspelledWord);
 	}
 
 	/**
@@ -144,7 +144,7 @@ public class Counter {
 	 *            the totalProbes to increment
 	 */
 	public void incrementTotalProbes() {
-		this.totalProbes++;
+		Counter.totalProbes++;
 	}
 
 	/**
@@ -163,7 +163,7 @@ public class Counter {
 	 *            the totalLookUps to increment
 	 */
 	public void incrementTotalLookUps() {
-		this.totalLookUps++;
+		Counter.totalLookUps++;
 	}
 
 	/**
@@ -173,10 +173,10 @@ public class Counter {
 	 */
 	public int getAvgProbesPerWord() {
 		
-		if(this.inputCount == 0)
+		if(Counter.inputCount == 0)
 			return 0;
 		
-		return this.totalProbes / this.inputCount;
+		return Counter.totalProbes / Counter.inputCount;
 	}
 
 	/**
@@ -186,9 +186,9 @@ public class Counter {
 	 */
 	public int getAvgProbesPerLookUp() {
 		
-		if(this.getInputCount() == 0)
+		if(Counter.inputCount == 0)
 			return 0;
 		
-		return this.totalProbes / this.totalLookUps;
+		return Counter.totalProbes / Counter.totalLookUps;
 	}
 }

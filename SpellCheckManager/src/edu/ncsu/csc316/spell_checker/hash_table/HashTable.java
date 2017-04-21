@@ -33,8 +33,11 @@ public class HashTable {
 	
 	public void buildHashTable(ArrayBasedList<String> dictionary) {
 		
-		for( int i= 0; i < dictionary.size(); i++ )
+		for( int i= 0; i < dictionary.size(); i++ ) {
+			
 			this.insert(dictionary.lookUp(i));
+			this.counter.incrementDictionaryCount();
+		}
 	}
 
 	//TODO Implement this
@@ -61,17 +64,22 @@ public class HashTable {
 	//TODO Implement this
 	public String lookUp(String word) {
 		
+		this.counter.incrementTotalLookUps();
 		int hash = this.getHashFromKey(word.hashCode());
 		
+		this.counter.incrementTotalProbes();
 		if(table[hash] == null)
 			return null;
 		else {
 			
 			Word entry = table[hash];
 			
-			while(entry != null && entry.getWord().hashCode() != word.hashCode())
+			while(entry != null && entry.getWord().hashCode() != word.hashCode()) {
+				
+				this.counter.incrementTotalProbes();
 				entry = entry.getNext();
-			
+			}
+				
 			if(entry.getNext() == null && entry.getWord().hashCode() != word.hashCode())
 				return null;
 			else
