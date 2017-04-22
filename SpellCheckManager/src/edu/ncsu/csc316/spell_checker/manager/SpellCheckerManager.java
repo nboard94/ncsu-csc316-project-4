@@ -59,7 +59,12 @@ public class SpellCheckerManager {
 		fileReader = new TextFileReader(pathToFile);
 		input = fileReader.getWords();
 		String c;
-		boolean flag1, flag2, flag3, flag4 = false;
+		
+		// First eight are used for telling if a rule is true, last one represents all rules
+		boolean[] flags = new boolean[10];
+		for(int i = 0; i < 10; i++)
+			flags[i] = false;
+		
 
 		for( int i = 0; i < input.size(); i++ ) {
 			
@@ -75,8 +80,49 @@ public class SpellCheckerManager {
 					c = r.PossessionRule(c);
 					if( !inHashDictionary(c)) {
 						
-						
-						
+						// Loop while not all flags are used
+						while( !flags[9] ) {
+							
+							// Create a copy of c for comparison
+							String d = c;
+							
+							// If word ends in -s and flag[0] isn't used
+							// Check PluralityRule1
+							if( c.charAt(c.length() - 1) == 's' && !flags[0] ) {
+								
+								 c = r.PluralityRule1(c);
+								 
+							}
+							
+							// If word ends in -es and flag[1] isn't used
+							// Check PluralityRule2
+							
+							// If word ends in -r and flag[2] isn't used
+							// Check OccupationRule1
+							
+							// If word ends in -er and flag[3] isn't used
+							// Check OccupationRule2
+							
+							// If word ends in -d and flag[4] isn't used
+							// Check PastTenseRule1
+							
+							// If words ends in -ed and flag[5] isn't used
+							// Check PastTenseRule2
+							
+							// If word ends in -ing and flag[6] isn't used
+							// Check GerundRule1
+							
+							// If word ends in -ing and flag[7 isn't used
+							// Check GerundRule2
+							
+							// If word ends in -ly and flag[8] isn't used
+							// Check AdverbRule
+							
+							// If flag[0-8] is used and word didn't change, set off flag[8]
+							if( flags[0] && flags[1] && flags[2] && flags[3] && flags[4] && flags[5] && flags[6] && flags[7] && flags[8])
+								flags[9] = true;
+							
+						}
 					}
 					else {
 						
