@@ -14,7 +14,7 @@ public class SpellCheckerManager {
 	/** Contains all words in the dictionary. */
 	private ArrayBasedList<String> dictionary;
 
-	/** Contains all words in the input file. */
+	/** Contains all words in the input file. */ 
 	private ArrayBasedList<String> input;
 	
 	/** HashTable containing words in the dictionary. */
