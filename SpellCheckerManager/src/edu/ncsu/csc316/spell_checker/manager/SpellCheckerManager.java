@@ -14,7 +14,7 @@ public class SpellCheckerManager {
 	/** Contains all words in the dictionary. */
 	private ArrayBasedList<String> dictionary;
 
-	/** Contains all words in the input file. */ 
+	/** Contains all words in the input file. */
 	private ArrayBasedList<String> input;
 	
 	/** HashTable containing words in the dictionary. */
@@ -22,10 +22,10 @@ public class SpellCheckerManager {
 
 	/** TextFileReader to scan both the dictionary and input file. */
 	private TextFileReader fileReader;
-	
+
 	/** The counter to keep track of stats. */
 	private Counter counter = new Counter();;
-	
+
 	/** Rules object, enables access to rules. */
 	private Rules r;
 
@@ -36,10 +36,10 @@ public class SpellCheckerManager {
 	 *            the path to the dictionary
 	 */
 	public SpellCheckerManager(String pathToDictionary) {
-		
+
 		fileReader = new TextFileReader(pathToDictionary);
 		dictionary = fileReader.getWords();
-		
+
 		hashDictionary = new HashTable();
 		hashDictionary.buildHashTable(dictionary);
 	}
@@ -54,101 +54,205 @@ public class SpellCheckerManager {
 	 * @return a string representation of the list of misspelled words
 	 */
 	public String spellCheck(String pathToFile) {
-		
-		counter.resetCounter();
+
+		// Read the input file.
 		fileReader = new TextFileReader(pathToFile);
 		input = fileReader.getWords();
-		String c;
 		
-		// First eight are used for telling if a rule is true, last one represents all rules
-		boolean[] flags = new boolean[10];
-		for(int i = 0; i < 10; i++)
-			flags[i] = false;
-		
+		// The Spell Checking Algorithm
+		String c, d;
+		boolean[] used = new boolean[9];
+		for (int i = 0; i < input.size(); i++) {
 
-		for( int i = 0; i < input.size(); i++ ) {
-			
-			// Look up original word.
+			// The word we are concerned with.
 			c = input.lookUp(i);
-			if ( !inHashDictionary(c) ) {
+			
+			// Lookup if original word is in dictionary.
+			if( !inDict(c) ) {
 				
-				// Make first letter lowercase, lookup.
+				// The original word is not in the dictionary.
+				// Apply capitalization rule, and then lookup.
 				c = r.CapitalizationRule(c);
-				if( !inHashDictionary(c)) {
+				if( !inDict(c) ) {
 					
-					// Remove -'s, then lookup.
+					// Word with capitalization rule applied not in dictionary.
+					// Apply possession rule, and then lookup.
 					c = r.PossessionRule(c);
-					if( !inHashDictionary(c)) {
+					if( !inDict(c)) {
 						
-						// Loop while not all flags are used
-						while( !flags[9] ) {
+						// Word with possession rule applied not in dictionary.
+						// Now apply the rest of the rules until we can no longer.
+						// The flags each represent whether a rule has been used or not,
+						// the last flag tells us if all the rules have been exhausted.
+						while( !used[9] ) {
 							
-							// Create a copy of c for comparison
-							String d = c;
+							// Use d to detect a change in the word this cycle. 
+							d = c;
 							
-							// If word ends in -s and flag[0] isn't used
-							// Check PluralityRule1
-							if( c.charAt(c.length() - 1) == 's' && !flags[0] ) {
+							// Apply plurality rule 1, if it has not yet been used.
+							if ( !used[0] ) {
 								
-								 c = r.PluralityRule1(c);
-								 
+								c = r.PluralityRule1(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[0] = true;
+									if( inDict(c) )
+										break;
+								}
 							}
 							
-							// If word ends in -es and flag[1] isn't used
-							// Check PluralityRule2
+							// Apply plurality rule 2, if it has not yet been used.
+							if ( !used[1] ) {
+								
+								c = r.PluralityRule2(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[1] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -r and flag[2] isn't used
-							// Check OccupationRule1
+							// Apply past tense rule 1, if it has not yet been used.
+							if ( !used[2] ) {
+								
+								c = r.PastTenseRule1(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[2] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -er and flag[3] isn't used
-							// Check OccupationRule2
+							// Apply past tense rule 2, if it has not yet been used.
+							if ( !used[3] ) {
+								
+								c = r.PastTenseRule2(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[3] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -d and flag[4] isn't used
-							// Check PastTenseRule1
+							// Apply occupation rule 1, if it has not yet been used.
+							if ( !used[4] ) {
+								
+								c = r.OccupationRule1(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[4] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If words ends in -ed and flag[5] isn't used
-							// Check PastTenseRule2
+							// Apply occupation rule 2, if it has not yet been used.
+							if ( !used[5] ) {
+								
+								c = r.OccupationRule2(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[5] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -ing and flag[6] isn't used
-							// Check GerundRule1
+							// Apply gerund rule 1, if it has not yet been used.
+							if ( !used[6] ) {
+								
+								c = r.GerundRule1(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[6] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -ing and flag[7 isn't used
-							// Check GerundRule2
+							// Apply gerund rule 2, if it has not yet been used.
+							if ( !used[7] ) {
+								
+								c = r.GerundRule2(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[7] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If word ends in -ly and flag[8] isn't used
-							// Check AdverbRule
+							// Apply adverb rule, if it has not yet been used.
+							if ( !used[8] ) {
+								
+								c = r.AdverbRule(c);
+								
+								// Check to see if the word was changed, if not then we do not use this rule.
+								// If so, look to see if it's in the dictionary and mark rule as used.
+								if ( !c.equals(d) ) {
+									
+									used[8] = true;
+									if( inDict(c) )
+										break;
+								}
+							}
 							
-							// If flag[0-8] is used and word didn't change, set off flag[8]
-							if( flags[0] && flags[1] && flags[2] && flags[3] && flags[4] && flags[5] && flags[6] && flags[7] && flags[8])
-								flags[9] = true;
+							// If c has not been changed at all, none of the rules can be applied, it is misspelled
+							if( c.equals(d) ) {
+								counter.addMisspelledWord(c);
+								used[9] = true;
+							}
 							
+							// TODO, I may need to check if all the rules have been used and set used[9] to true manually.
+							// I think that's taken care of when none of the rules can be applied anymore, though.
 						}
 					}
-					else {
-						
-						// Remove -'s in dictionary.
-					}
 				}
-				else {
-					
-					// First letter lowercase in dictionary.
-				}
-			}
-			else {
-				
-				// Original word in dictionary.
-				
 			}
 		}
 		
+		//Build and return the string of misspelled words.
+		StringBuilder sb = new StringBuilder();
+		for( int i = 0; i < counter.getMisspelledWords().size(); i++ ){
+			
+			sb.append(counter.getMisspelledWords().lookUp(i) + ", ");
+		}
+
 		return pathToFile;
 	}
-	
-	private boolean inHashDictionary(String c) {
-		
-		if( hashDictionary.lookUp(c).equals(c))
-			return true;
-		else
+
+	private boolean inDict(String c) {
+
+		if (hashDictionary.lookUp(c) == null )
 			return false;
+		else
+			return true;
 	}
 }
