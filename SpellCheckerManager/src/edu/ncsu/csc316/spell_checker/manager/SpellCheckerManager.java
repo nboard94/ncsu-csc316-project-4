@@ -24,10 +24,10 @@ public class SpellCheckerManager {
 	private TextFileReader fileReader;
 
 	/** The counter to keep track of stats. */
-	private Counter counter = new Counter();;
+	private Counter counter = new Counter();
 
 	/** Rules object, enables access to rules. */
-	private Rules r;
+	private Rules r = new Rules();
 
 	/**
 	 * Constructs a new Spell Checker with the given dictionary
@@ -61,7 +61,7 @@ public class SpellCheckerManager {
 		
 		// The Spell Checking Algorithm
 		String c, d;
-		boolean[] used = new boolean[9];
+		boolean[] used = new boolean[10];
 		for (int i = 0; i < input.size(); i++) {
 
 			// The word we are concerned with.
@@ -131,6 +131,8 @@ public class SpellCheckerManager {
 									used[2] = true;
 									if( inDict(c) )
 										break;
+									else
+										c = d;
 								}
 							}
 							
@@ -226,7 +228,7 @@ public class SpellCheckerManager {
 							
 							// If c has not been changed at all, none of the rules can be applied, it is misspelled
 							if( c.equals(d) ) {
-								counter.addMisspelledWord(c);
+								counter.addMisspelledWord(input.lookUp(i));
 								used[9] = true;
 							}
 							
@@ -245,7 +247,7 @@ public class SpellCheckerManager {
 			sb.append(counter.getMisspelledWords().lookUp(i) + ", ");
 		}
 
-		return pathToFile;
+		return sb.toString().substring(0, sb.toString().length() - 2);
 	}
 
 	private boolean inDict(String c) {
