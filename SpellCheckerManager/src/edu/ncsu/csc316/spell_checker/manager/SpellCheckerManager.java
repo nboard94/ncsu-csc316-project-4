@@ -1,11 +1,11 @@
 package edu.ncsu.csc316.spell_checker.manager;
 
-import edu.ncsu.csc316.grocerystore.sorter.Sorted;
 import edu.ncsu.csc316.spell_checker.counter.Counter;
 import edu.ncsu.csc316.spell_checker.hash_table.HashTable;
 import edu.ncsu.csc316.spell_checker.io.TextFileReader;
 import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 import edu.ncsu.csc316.spell_checker.rules.Rules;
+import edu.ncsu.csc316.spell_checker.sorter.Sorted;
 
 /**
  * The engine of the SpellCheckManager program.

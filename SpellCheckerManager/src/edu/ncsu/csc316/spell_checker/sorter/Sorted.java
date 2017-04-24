@@ -1,4 +1,4 @@
-package edu.ncsu.csc316.grocerystore.sorter;
+package edu.ncsu.csc316.spell_checker.sorter;
 
 import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 

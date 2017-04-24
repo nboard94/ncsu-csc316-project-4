@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import edu.ncsu.csc316.spell_checker.counter.Counter;
 import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 
 /**
@@ -21,6 +22,8 @@ public class HashTableTest {
 
 		HashTable table = new HashTable();
 		assertEquals(0, table.size());
+		Counter count = table.getCount();
+		assertEquals(count, table.getCount());
 
 		ArrayBasedList<String> smallD = new ArrayBasedList<String>();
 		smallD.insert("little");
