@@ -304,15 +304,18 @@ public class SpellCheckerManager {
 		
 		// Build and return the string of misspelled words.
 		StringBuilder sb = new StringBuilder();
+		sb.append("ArrayBasedList[");
+		
 		for (int i = 0; i < mw.size(); i++) {
 
-			sb.append(mw.lookUp(i) + ", ");
+			if( i == mw.size() - 1)
+				sb.append(mw.lookUp(i));
+			else
+				sb.append(mw.lookUp(i) + ", ");
 		}
 
-		if (sb.toString().length() > 2)
-			return sb.toString().substring(0, sb.toString().length() - 2);
-		else
-			return sb.toString();
+		sb.append("]");
+		return sb.toString();
 	}
 
 	private boolean inDict(String c) {

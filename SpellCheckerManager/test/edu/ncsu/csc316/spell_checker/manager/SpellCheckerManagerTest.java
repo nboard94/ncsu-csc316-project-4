@@ -14,7 +14,7 @@ public class SpellCheckerManagerTest {
 	
 	private String pathToD = "input/dictionary.txt";
 	private String pathToI = "input/input.txt";
-	private String misspelled = "and, are, However, most, of, those";
+	private String misspelled = "ArrayBasedList[and, are, However, most, of, those]";
 	
 	/**
 	 * Test the SpellCheckerManager.
