@@ -92,7 +92,12 @@ public class HashTable {
 				entry = entry.getNext();
 			}
 
-			if (entry.getNext() == null && entry.getWord().hashCode() != word.hashCode())
+//			if (entry.getNext() == null && entry.getWord().hashCode() != word.hashCode())
+//				return null;
+//			else
+//				return entry.getWord();
+			
+			if (entry.getWord().hashCode() != word.hashCode() && entry.getNext() == null)
 				return null;
 			else
 				return entry.getWord();
