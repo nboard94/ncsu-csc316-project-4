@@ -3,8 +3,9 @@ package edu.ncsu.csc316.spell_checker.counter;
 import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 
 /**
- * @author Nicholas Board (ndboard) The Counter keeps track of statistics such
- *         as number of probes and lookups.
+ * The Counter keeps track of statistics such as number of probes and lookups.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class Counter {
 
@@ -63,9 +64,6 @@ public class Counter {
 
 	/**
 	 * Increment the dictionaryCount.
-	 * 
-	 * @param dictionaryCount
-	 *            the dictionaryCount to Increment
 	 */
 	public void incrementDictionaryCount() {
 		Counter.dictionaryCount++;
@@ -82,9 +80,6 @@ public class Counter {
 
 	/**
 	 * Increment the inputCount.
-	 * 
-	 * @param inputCount
-	 *            the inputCount to increment
 	 */
 	public void incrementInputCount() {
 		Counter.inputCount++;
@@ -101,9 +96,6 @@ public class Counter {
 
 	/**
 	 * Increment the misspelled.
-	 * 
-	 * @param misspelled
-	 *            the misspelled to increment
 	 */
 	public void incrementMisspelled() {
 		Counter.misspelled++;
@@ -120,9 +112,6 @@ public class Counter {
 
 	/**
 	 * Adds a misspelledWord.
-	 * 
-	 * @param misspelledWord
-	 *            the misspelledWord to add
 	 */
 	public void addMisspelledWord(String misspelledWord) {
 		Counter.misspelledWords.insert(misspelledWord);
@@ -139,9 +128,6 @@ public class Counter {
 
 	/**
 	 * Increment the totalProbes.
-	 * 
-	 * @param totalProbes
-	 *            the totalProbes to increment
 	 */
 	public void incrementTotalProbes() {
 		Counter.totalProbes++;
@@ -158,9 +144,6 @@ public class Counter {
 
 	/**
 	 * Increment the totalLookUps.
-	 * 
-	 * @param totalLookUps
-	 *            the totalLookUps to increment
 	 */
 	public void incrementTotalLookUps() {
 		Counter.totalLookUps++;
@@ -172,10 +155,10 @@ public class Counter {
 	 * @return the avgProbesPerWord
 	 */
 	public int getAvgProbesPerWord() {
-		
-		if(Counter.inputCount == 0)
+
+		if (Counter.inputCount == 0)
 			return 0;
-		
+
 		return Counter.totalProbes / Counter.inputCount;
 	}
 
@@ -185,10 +168,10 @@ public class Counter {
 	 * @return the avgProbesPerLookUp
 	 */
 	public int getAvgProbesPerLookUp() {
-		
-		if(Counter.inputCount == 0)
+
+		if (Counter.inputCount == 0)
 			return 0;
-		
+
 		return Counter.totalProbes / Counter.totalLookUps;
 	}
 }

@@ -1,7 +1,9 @@
 package edu.ncsu.csc316.spell_checker.rules;
 
 /**
- * @author Nicholas Board (ndboard) These transfomations are applied to words.
+ * These transfomations are applied to words.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class Rules {
 
@@ -21,7 +23,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String CapitalizationRule(String word) {
+	public String capitalizationRule(String word) {
 
 		if (Character.isUpperCase(word.charAt(0)))
 			return Character.toLowerCase(word.charAt(0)) + word.substring(1, word.length());
@@ -36,7 +38,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String PossessionRule(String word) {
+	public String possessionRule(String word) {
 
 		if (word.substring(word.length() - 2, word.length()).equals("'s"))
 			return word.substring(0, word.length() - 2);
@@ -51,7 +53,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String PluralityRule1(String word) {
+	public String pluralityRule1(String word) {
 
 		if (word.charAt(word.length() - 1) == 's')
 			return word.substring(0, word.length() - 1);
@@ -66,7 +68,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String PluralityRule2(String word) {
+	public String pluralityRule2(String word) {
 
 		if (word.substring(word.length() - 2).equals("es"))
 			return word.substring(0, word.length() - 2);
@@ -81,7 +83,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String PastTenseRule1(String word) {
+	public String pastTenseRule1(String word) {
 
 		if (word.charAt(word.length() - 1) == 'd')
 			return word.substring(0, word.length() - 1);
@@ -96,7 +98,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String PastTenseRule2(String word) {
+	public String pastTenseRule2(String word) {
 
 		if (word.substring(word.length() - 2).equals("ed"))
 			return word.substring(0, word.length() - 2);
@@ -111,7 +113,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String OccupationRule1(String word) {
+	public String occupationRule1(String word) {
 
 		if (word.charAt(word.length() - 1) == 'r')
 			return word.substring(0, word.length() - 1);
@@ -126,7 +128,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String OccupationRule2(String word) {
+	public String occupationRule2(String word) {
 
 		if (word.substring(word.length() - 2).equals("er"))
 			return word.substring(0, word.length() - 2);
@@ -141,7 +143,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String GerundRule1(String word) {
+	public String gerundRule1(String word) {
 
 		if (word.length() > 3 && word.substring(word.length() - 3).equals("ing"))
 			return word.substring(0, word.length() - 3);
@@ -156,7 +158,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String GerundRule2(String word) {
+	public String gerundRule2(String word) {
 
 		if (word.length() > 3 && word.substring(word.length() - 3).equals("ing"))
 			return word.substring(0, word.length() - 3) + 'e';
@@ -171,7 +173,7 @@ public class Rules {
 	 *            The word to change.
 	 * @return The transformed word.
 	 */
-	public String AdverbRule(String word) {
+	public String adverbRule(String word) {
 
 		if (word.substring(word.length() - 2).equals("ly"))
 			return word.substring(0, word.length() - 2);

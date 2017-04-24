@@ -5,8 +5,9 @@ import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 import edu.ncsu.csc316.spell_checker.word.Word;
 
 /**
- * @author Nicholas Board (ndboard) The HashTable used in the
- *         SpellCheckerManager.
+ * The HashTable used in the SpellCheckerManager.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class HashTable {
 
@@ -31,6 +32,10 @@ public class HashTable {
 		size = 0;
 	}
 
+	/**
+	 * Given a dictionary, builds a HashTable.
+	 * @param dictionary to build the HashTable with.
+	 */
 	public void buildHashTable(ArrayBasedList<String> dictionary) {
 
 		for (int i = 0; i < dictionary.size(); i++) {
@@ -40,7 +45,10 @@ public class HashTable {
 		}
 	}
 
-	// TODO Implement this
+	/**
+	 * Inserts a value into the HashTable.
+	 * @param value The value to insert.
+	 */
 	public void insert(String value) {
 
 		Word newWord = new Word(value);
@@ -61,7 +69,11 @@ public class HashTable {
 		this.size++;
 	}
 
-	// TODO Implement this
+	/**
+	 * Looksup a word in the HashTable.
+	 * @param word The word to lookUp.
+	 * @return The found word.
+	 */
 	public String lookUp(String word) {
 
 		this.counter.incrementTotalLookUps();

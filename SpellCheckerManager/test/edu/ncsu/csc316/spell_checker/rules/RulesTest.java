@@ -5,8 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * @author Nicholas Board (ndboard) Tests all the rule transformations that can
- *         be applied.
+ * Tests all the rule transformations that can be applied.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class RulesTest {
 
@@ -19,9 +20,9 @@ public class RulesTest {
 	@Test
 	public void testCapitalizationRule() {
 
-		assertEquals("the", r.CapitalizationRule("the"));
+		assertEquals("the", r.capitalizationRule("the"));
 
-		assertEquals("the", r.CapitalizationRule("The"));
+		assertEquals("the", r.capitalizationRule("The"));
 	}
 
 	/**
@@ -30,9 +31,9 @@ public class RulesTest {
 	@Test
 	public void testPossessionRule() {
 
-		assertEquals("cook", r.PossessionRule("cook"));
+		assertEquals("cook", r.possessionRule("cook"));
 
-		assertEquals("cook", r.PossessionRule("cook's"));
+		assertEquals("cook", r.possessionRule("cook's"));
 	}
 
 	/**
@@ -41,9 +42,9 @@ public class RulesTest {
 	@Test
 	public void testPluralityRule1() {
 
-		assertEquals("cake", r.PluralityRule1("cake"));
+		assertEquals("cake", r.pluralityRule1("cake"));
 
-		assertEquals("cake", r.PluralityRule1("cakes"));
+		assertEquals("cake", r.pluralityRule1("cakes"));
 	}
 
 	/**
@@ -52,9 +53,9 @@ public class RulesTest {
 	@Test
 	public void testPluralityRule2() {
 
-		assertEquals("dish", r.PluralityRule2("dish"));
+		assertEquals("dish", r.pluralityRule2("dish"));
 
-		assertEquals("dish", r.PluralityRule2("dishes"));
+		assertEquals("dish", r.pluralityRule2("dishes"));
 	}
 
 	/**
@@ -63,9 +64,9 @@ public class RulesTest {
 	@Test
 	public void testPastTenseRule1() {
 
-		assertEquals("bake", r.PastTenseRule1("bake"));
+		assertEquals("bake", r.pastTenseRule1("bake"));
 
-		assertEquals("bake", r.PastTenseRule1("baked"));
+		assertEquals("bake", r.pastTenseRule1("baked"));
 	}
 
 	/**
@@ -74,9 +75,9 @@ public class RulesTest {
 	@Test
 	public void testPastTenseRule2() {
 
-		assertEquals("cook", r.PastTenseRule2("cook"));
+		assertEquals("cook", r.pastTenseRule2("cook"));
 
-		assertEquals("cook", r.PastTenseRule2("cooked"));
+		assertEquals("cook", r.pastTenseRule2("cooked"));
 	}
 
 	/**
@@ -85,9 +86,9 @@ public class RulesTest {
 	@Test
 	public void testOccupationRule1() {
 
-		assertEquals("bake", r.OccupationRule1("bake"));
+		assertEquals("bake", r.occupationRule1("bake"));
 
-		assertEquals("bake", r.OccupationRule1("baker"));
+		assertEquals("bake", r.occupationRule1("baker"));
 	}
 
 	/**
@@ -96,9 +97,9 @@ public class RulesTest {
 	@Test
 	public void testOccupationRule2() {
 
-		assertEquals("cook", r.OccupationRule2("cook"));
+		assertEquals("cook", r.occupationRule2("cook"));
 
-		assertEquals("cook", r.OccupationRule2("cooker"));
+		assertEquals("cook", r.occupationRule2("cooker"));
 	}
 
 	/**
@@ -107,9 +108,9 @@ public class RulesTest {
 	@Test
 	public void testGerundRule1() {
 
-		assertEquals("cook", r.GerundRule1("cook"));
+		assertEquals("cook", r.gerundRule1("cook"));
 
-		assertEquals("cook", r.GerundRule1("cooking"));
+		assertEquals("cook", r.gerundRule1("cooking"));
 	}
 
 	/**
@@ -118,9 +119,9 @@ public class RulesTest {
 	@Test
 	public void testGerundRule2() {
 
-		assertEquals("bake", r.GerundRule2("bake"));
+		assertEquals("bake", r.gerundRule2("bake"));
 
-		assertEquals("bake", r.GerundRule2("baking"));
+		assertEquals("bake", r.gerundRule2("baking"));
 	}
 
 	/**
@@ -129,8 +130,8 @@ public class RulesTest {
 	@Test
 	public void testAdverbRule() {
 
-		assertEquals("delicious", r.AdverbRule("delicious"));
+		assertEquals("delicious", r.adverbRule("delicious"));
 
-		assertEquals("delicious", r.AdverbRule("deliciously"));
+		assertEquals("delicious", r.adverbRule("deliciously"));
 	}
 }

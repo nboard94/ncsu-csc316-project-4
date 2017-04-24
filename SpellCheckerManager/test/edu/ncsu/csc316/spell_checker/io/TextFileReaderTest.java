@@ -5,7 +5,9 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 /**
- * @author Nicholas Board (ndboard) Tests the TextFileReader class.
+ * Tests the TextFileReader class.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class TextFileReaderTest {
 

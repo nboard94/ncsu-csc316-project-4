@@ -7,7 +7,9 @@ import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 import edu.ncsu.csc316.spell_checker.rules.Rules;
 
 /**
- * @author Nicholas Board (ndboard) The engine of the SpellCheckManager program.
+ * The engine of the SpellCheckManager program.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class SpellCheckerManager {
 
@@ -78,12 +80,12 @@ public class SpellCheckerManager {
 
 				// The original word is not in the dictionary.
 				// Apply capitalization rule, and then lookup.
-				c = r.CapitalizationRule(c);
+				c = r.capitalizationRule(c);
 				if (!inDict(c)) {
 
 					// Word with capitalization rule applied not in dictionary.
 					// Apply possession rule, and then lookup.
-					c = r.PossessionRule(c);
+					c = r.possessionRule(c);
 					if (!inDict(c)) {
 
 						// Word with possession rule applied not in dictionary.
@@ -102,7 +104,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[0]) {
 
-								c = r.PluralityRule1(c);
+								c = r.pluralityRule1(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -122,7 +124,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[1]) {
 
-								c = r.PluralityRule2(c);
+								c = r.pluralityRule2(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -142,7 +144,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[2]) {
 
-								c = r.PastTenseRule1(c);
+								c = r.pastTenseRule1(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -162,7 +164,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[3]) {
 
-								c = r.PastTenseRule2(c);
+								c = r.pastTenseRule2(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -182,7 +184,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[4]) {
 
-								c = r.OccupationRule1(c);
+								c = r.occupationRule1(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -202,7 +204,7 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[5]) {
 
-								c = r.OccupationRule2(c);
+								c = r.occupationRule2(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -221,7 +223,7 @@ public class SpellCheckerManager {
 							// Apply gerund rule 1, if it has not yet been used.
 							if (!used[6]) {
 
-								c = r.GerundRule1(c);
+								c = r.gerundRule1(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -240,7 +242,7 @@ public class SpellCheckerManager {
 							// Apply gerund rule 2, if it has not yet been used.
 							if (!used[7]) {
 
-								c = r.GerundRule2(c);
+								c = r.gerundRule2(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -259,7 +261,7 @@ public class SpellCheckerManager {
 							// Apply adverb rule, if it has not yet been used.
 							if (!used[8]) {
 
-								c = r.AdverbRule(c);
+								c = r.adverbRule(c);
 
 								// Check to see if the word was changed, if not
 								// then we do not use this rule.
@@ -312,9 +314,7 @@ public class SpellCheckerManager {
 
 		if (hashDictionary.lookUp(c) == null)
 			return false;
-		else if (hashDictionary.lookUp(c).equals(c))
-			return true;
 		else
-			return false;
+			return hashDictionary.lookUp(c).equals(c);
 	}
 }

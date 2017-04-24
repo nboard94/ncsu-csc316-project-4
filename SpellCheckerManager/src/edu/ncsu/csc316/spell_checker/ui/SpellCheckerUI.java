@@ -6,8 +6,9 @@ import java.util.Scanner;
 import edu.ncsu.csc316.spell_checker.manager.SpellCheckerManager;
 
 /**
- * @author Nicholas Board (ndboard) Controls the mechanisms that interfaces with
- *         the user.
+ * Controls the mechanisms that interfaces with the user.
+ * 
+ * @author Nicholas Board (ndboard)
  */
 public class SpellCheckerUI {
 
