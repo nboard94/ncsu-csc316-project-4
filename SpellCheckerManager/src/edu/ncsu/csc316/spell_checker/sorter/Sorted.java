@@ -67,9 +67,9 @@ public class Sorted {
 		if (stop <= start)
 			return start;
 		while (true) {
-			while (arr.lookUp(up).toLowerCase().compareTo(part.toLowerCase()) < 0)
+			while (arr.lookUp(up).compareToIgnoreCase(part) < 0)
 				up++;
-			while ((part.toLowerCase().compareTo(arr.lookUp(down).toLowerCase()) < 0) && (up < down))
+			while ((part.compareToIgnoreCase(arr.lookUp(down)) < 0) && (up < down))
 				down--;
 			if (up >= down)
 				break;
