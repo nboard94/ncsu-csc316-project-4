@@ -49,6 +49,7 @@ public class TextFileReader {
 			
 			System.out.println(this.getWords().lookUp(i));
 		}
+		System.out.println("***********************************");
 	}
 
 	/**
