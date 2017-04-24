@@ -40,7 +40,7 @@ public class Rules {
 	 */
 	public String possessionRule(String word) {
 
-		if (word.substring(word.length() - 2, word.length()).equals("'s"))
+		if (word.length() > 2 && word.substring(word.length() - 2, word.length()).equals("'s"))
 			return word.substring(0, word.length() - 2);
 
 		return word;
@@ -55,7 +55,7 @@ public class Rules {
 	 */
 	public String pluralityRule1(String word) {
 
-		if (word.charAt(word.length() - 1) == 's')
+		if (word.length() > 1 && word.charAt(word.length() - 1) == 's')
 			return word.substring(0, word.length() - 1);
 
 		return word;
@@ -70,7 +70,7 @@ public class Rules {
 	 */
 	public String pluralityRule2(String word) {
 
-		if (word.substring(word.length() - 2).equals("es"))
+		if (word.length() > 2 && word.substring(word.length() - 2).equals("es"))
 			return word.substring(0, word.length() - 2);
 
 		return word;
@@ -85,7 +85,7 @@ public class Rules {
 	 */
 	public String pastTenseRule1(String word) {
 
-		if (word.charAt(word.length() - 1) == 'd')
+		if (word.length() > 1 && word.charAt(word.length() - 1) == 'd')
 			return word.substring(0, word.length() - 1);
 
 		return word;
@@ -100,7 +100,7 @@ public class Rules {
 	 */
 	public String pastTenseRule2(String word) {
 
-		if (word.substring(word.length() - 2).equals("ed"))
+		if (word.length() > 2 && word.substring(word.length() - 2).equals("ed"))
 			return word.substring(0, word.length() - 2);
 
 		return word;
@@ -115,7 +115,7 @@ public class Rules {
 	 */
 	public String occupationRule1(String word) {
 
-		if (word.charAt(word.length() - 1) == 'r')
+		if (word.length() > 1 && word.charAt(word.length() - 1) == 'r')
 			return word.substring(0, word.length() - 1);
 
 		return word;
@@ -130,7 +130,7 @@ public class Rules {
 	 */
 	public String occupationRule2(String word) {
 
-		if (word.substring(word.length() - 2).equals("er"))
+		if (word.length() > 2 && word.substring(word.length() - 2).equals("er"))
 			return word.substring(0, word.length() - 2);
 
 		return word;
@@ -175,7 +175,7 @@ public class Rules {
 	 */
 	public String adverbRule(String word) {
 
-		if (word.substring(word.length() - 2).equals("ly"))
+		if (word.length() > 2 && word.substring(word.length() - 2).equals("ly"))
 			return word.substring(0, word.length() - 2);
 
 		return word;

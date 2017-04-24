@@ -299,25 +299,27 @@ public class SpellCheckerManager {
 		}
 
 		// Sort out misspelled words.
+		//TODO using bubble sort just to rule out Sorted.  Still isn't working.
 		Sorted s = new Sorted();
-		ArrayBasedList<String> mw = s.quicksort(counter.getMisspelledWords(), 0, counter.getMisspelledWords().size() - 1);
-		
-		for( int i = 0; i < mw.size(); i++ ) {
-			
-			for( int j = 1; j < ( mw.size() - i); j++) {
-				
-				if( mw.lookUp(j-1).compareToIgnoreCase(mw.lookUp(j)) > 1)
-					mw.swap(j-1, j);
+		ArrayBasedList<String> mw = s.quicksort(counter.getMisspelledWords(), 0,
+				counter.getMisspelledWords().size() - 1);
+
+		for (int i = 0; i < mw.size(); i++) {
+
+			for (int j = 1; j < (mw.size() - i); j++) {
+
+				if (mw.lookUp(j - 1).compareToIgnoreCase(mw.lookUp(j)) > 1)
+					mw.swap(j - 1, j);
 			}
 		}
-		
+
 		// Build and return the string of misspelled words.
 		StringBuilder sb = new StringBuilder();
 		sb.append("ArrayBasedList[");
-		
+
 		for (int i = 0; i < mw.size(); i++) {
 
-			if( i == mw.size() - 1)
+			if (i == mw.size() - 1)
 				sb.append(mw.lookUp(i));
 			else
 				sb.append(mw.lookUp(i) + ", ");
