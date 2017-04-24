@@ -111,7 +111,8 @@ public class Counter {
 	}
 
 	/**
-	 * Adds a misspelledWord.
+	 * Adds a misspelled word.
+	 * @param misspelledWord The word that is misspelled.
 	 */
 	public void addMisspelledWord(String misspelledWord) {
 		Counter.misspelledWords.insert(misspelledWord);
