@@ -86,7 +86,6 @@ public class HashTable {
 
 			Word entry = table[hash];
 
-			//while (entry != null && entry.getWord().hashCode() != word.hashCode()) {
 			while (entry != null && entry.getWord() != null && entry.getWord().hashCode() != word.hashCode()) {
 
 				this.counter.incrementTotalProbes();
