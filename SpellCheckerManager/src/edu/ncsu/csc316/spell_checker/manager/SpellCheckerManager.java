@@ -1,5 +1,6 @@
 package edu.ncsu.csc316.spell_checker.manager;
 
+import edu.ncsu.csc316.grocerystore.sorter.Sorted;
 import edu.ncsu.csc316.spell_checker.counter.Counter;
 import edu.ncsu.csc316.spell_checker.hash_table.HashTable;
 import edu.ncsu.csc316.spell_checker.io.TextFileReader;
@@ -297,11 +298,15 @@ public class SpellCheckerManager {
 			}
 		}
 
+		// Sort out misspelled words.
+		Sorted s = new Sorted();
+		ArrayBasedList<String> mw = s.quicksort(counter.getMisspelledWords(), 0, counter.getMisspelledWords().size() - 1);
+		
 		// Build and return the string of misspelled words.
 		StringBuilder sb = new StringBuilder();
-		for (int i = 0; i < counter.getMisspelledWords().size(); i++) {
+		for (int i = 0; i < mw.size(); i++) {
 
-			sb.append(counter.getMisspelledWords().lookUp(i) + ", ");
+			sb.append(mw.lookUp(i) + ", ");
 		}
 
 		if (sb.toString().length() > 2)

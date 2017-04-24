@@ -72,7 +72,7 @@ public class HashTable {
 	/**
 	 * Looksup a word in the HashTable.
 	 * @param word The word to lookUp.
-	 * @return The found word.
+	 * @return The found word, or null otherwise.
 	 */
 	public String lookUp(String word) {
 
@@ -92,11 +92,6 @@ public class HashTable {
 				entry = entry.getNext();
 			}
 
-//			if (entry.getNext() == null && entry.getWord().hashCode() != word.hashCode())
-//				return null;
-//			else
-//				return entry.getWord();
-			
 			if (entry.getWord().hashCode() != word.hashCode())
 				return null;
 			else
