@@ -41,5 +41,8 @@ public class HashTableTest {
 		assertNull(table.lookUp("big"));
 		assertNull(table.lookUp("red"));
 		assertNull(table.lookUp("Clifford"));
+		
+		table.insert("dog");
+		table.insert("dog");
 	}
 }
