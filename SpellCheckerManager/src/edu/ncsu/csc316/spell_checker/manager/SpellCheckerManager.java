@@ -258,6 +258,8 @@ public class SpellCheckerManager {
 										break;
 									else if (!used[6])
 										c = d;
+									else
+										c = c.substring(0, c.length() - 1);
 								}
 							}
 
