@@ -1,0 +1,4 @@
+abcdefg
+ABCDEFG
+TEACH
+tEACH

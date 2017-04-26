@@ -19,12 +19,14 @@ public class SpellCheckerManager {
 
 	/** Contains all words in the input file. */
 	private ArrayBasedList<String> input;
+	
+	private ArrayBasedList<String> misspelled = new ArrayBasedList<String>();
 
 	/** HashTable containing words in the dictionary. */
 	private HashTable hashDictionary;
 
 	/** HashTable containing all misspelled words. */
-	private HashTable misspelled;
+	private HashTable misspelledTable;
 
 	/** TextFileReader to scan both the dictionary and input file. */
 	private TextFileReader fileReader;
@@ -61,7 +63,7 @@ public class SpellCheckerManager {
 	 */
 	public String spellCheck(String pathToFile) {
 
-		misspelled = new HashTable();
+		misspelledTable = new HashTable();
 
 		// Read the input file.
 		fileReader = new TextFileReader(pathToFile);
@@ -281,10 +283,10 @@ public class SpellCheckerManager {
 							if (c.equals(d)) {
 
 								used[9] = true;
-								if (misspelled.lookUp(input.lookUp(i)) == null) {
+								if (misspelledTable.lookUp(input.lookUp(i)) == null) {
 
-									misspelled.insert(input.lookUp(i));
-									counter.addMisspelledWord(input.lookUp(i));
+									misspelledTable.insert(input.lookUp(i));
+									misspelled.insert((input.lookUp(i)));
 								}
 							}
 
@@ -301,8 +303,8 @@ public class SpellCheckerManager {
 		// Sort out misspelled words.
 		//TODO using bubble sort just to rule out Sorted.  Still isn't working.
 		Sorted s = new Sorted();
-		ArrayBasedList<String> mw = s.quicksort(counter.getMisspelledWords(), 0,
-				counter.getMisspelledWords().size() - 1);
+		
+		ArrayBasedList<String> mw = misspelled;
 
 		for (int i = 0; i < mw.size(); i++) {
 
