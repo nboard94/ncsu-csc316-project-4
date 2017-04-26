@@ -47,9 +47,9 @@ public class TextFileReader {
 		
 		for( int i = 0; i < this.getWords().size(); i++ ) {
 			
-			System.out.println(this.getWords().lookUp(i));
+			System.out.printf(this.getWords().lookUp(i) + "\n");
 		}
-		System.out.println("***********************************");
+		System.out.printf("***********************************\n");
 	}
 
 	/**
