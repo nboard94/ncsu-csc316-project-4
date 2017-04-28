@@ -19,9 +19,11 @@ public class SpellCheckerManager {
 	/** Contains all words in the input file. */
 	private ArrayBasedList<String> input;
 	
+	/** Contains all misspelled words. */
 	private ArrayBasedList<String> misspelled = new ArrayBasedList<String>();
 	
-	ArrayBasedList<String> mw;
+	/** Contains all misspelled words 2. */
+	private ArrayBasedList<String> mw;
 
 	/** HashTable containing words in the dictionary. */
 	private HashTable hashDictionary;
