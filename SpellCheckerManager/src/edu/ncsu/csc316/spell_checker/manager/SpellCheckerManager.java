@@ -287,7 +287,7 @@ public class SpellCheckerManager {
 								if (misspelledTable.lookUp(input.lookUp(i)) == null) {
 
 									misspelledTable.insert(input.lookUp(i));
-									misspelled.insert((input.lookUp(i)));
+									misspelled.insert(input.lookUp(i));
 								}
 							}
 
@@ -340,6 +340,10 @@ public class SpellCheckerManager {
 			return hashDictionary.lookUp(c).equals(c);
 	}
 	
+	/**
+	 * This prints out the spellcheck report data.
+	 * @return The string that represents the spellcheck report.
+	 */
 	public String report() {
 		
 		StringBuilder sb = new StringBuilder();
