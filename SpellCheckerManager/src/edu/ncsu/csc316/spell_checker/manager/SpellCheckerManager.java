@@ -350,8 +350,16 @@ public class SpellCheckerManager {
 		sb.append("Number of words misspelled: " + this.mw.size() + "\n");
 		sb.append("Total number of probes: " + this.counter.getTotalProbes() + "\n");
 		sb.append("Total number of lookups: " + this.counter.getTotalLookUps() + "\n");
-		sb.append("Average number of probes per word check: " + (double)( this.input.size() / this.counter.getTotalProbes() ) + "\n");
-		sb.append("Average number of probes per lookup: " + (double)(this.counter.getTotalProbes() / this.counter.getTotalLookUps()) + "\n");
+		
+		if( this.counter.getTotalProbes() == 0 )
+			sb.append("Average number of probes per word check: " + 0 + "\n");
+		else
+			sb.append("Average number of probes per word check: " + (double)( this.input.size() / this.counter.getTotalProbes() ) + "\n");
+		
+		if( this.counter.getTotalLookUps() == 0 )
+			sb.append("Average number of probes per lookup: " + 0 + "\n");
+		else
+			sb.append("Average number of probes per lookup: " + (double)(this.counter.getTotalProbes() / this.counter.getTotalLookUps()) + "\n");
 		
 		return sb.toString();
 	}
