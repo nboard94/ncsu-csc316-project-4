@@ -73,7 +73,7 @@ public class SpellCheckerManager {
 		input = fileReader.getWords();
 
 		// The Spell Checking Algorithm
-		String c, d, e;
+		String c, d;
 		boolean[] used;
 		for (int i = 0; i < input.size(); i++) {
 
@@ -110,7 +110,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[0]) {
 
-								e = c; 
 								c = r.pluralityRule1(c);
 
 								// Check to see if the word was changed, if not
@@ -123,7 +122,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[1])
-										c = e;
+										c = d;
 								}
 							}
 
@@ -131,7 +130,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[1]) {
 
-								e = c;
 								c = r.pluralityRule2(c);
 
 								// Check to see if the word was changed, if not
@@ -144,7 +142,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[0])
-										c = e;
+										c = d;
 								}
 							}
 
@@ -152,7 +150,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[2]) {
 
-								e = c;
 								c = r.pastTenseRule1(c);
 
 								// Check to see if the word was changed, if not
@@ -165,7 +162,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[3])
-										c = e;
+										c = d;
 								}
 							}
 
@@ -173,7 +170,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[3]) {
 
-								e = c;
 								c = r.pastTenseRule2(c);
 
 								// Check to see if the word was changed, if not
@@ -186,7 +182,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[2])
-										c = e;
+										c = d;
 								}
 							}
 
@@ -194,7 +190,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[4]) {
 
-								e = c;
 								c = r.occupationRule1(c);
 
 								// Check to see if the word was changed, if not
@@ -207,7 +202,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[5])
-										c = e;
+										c = d;
 								}
 							}
 
@@ -215,7 +210,6 @@ public class SpellCheckerManager {
 							// used.
 							if (!used[5]) {
 
-								e = c;
 								c = r.occupationRule2(c);
 
 								// Check to see if the word was changed, if not
@@ -228,14 +222,13 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[4])
-										c = e;
+										c = d;
 								}
 							}
 
 							// Apply gerund rule 1, if it has not yet been used.
 							if (!used[6]) {
 
-								e = c;
 								c = r.gerundRule1(c);
 
 								// Check to see if the word was changed, if not
@@ -248,14 +241,13 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[7])
-										c = e;
+										c = d;
 								}
 							}
 
 							// Apply gerund rule 2, if it has not yet been used.
 							if (!used[7]) {
 
-								e = c;
 								c = r.gerundRule2(c);
 
 								// Check to see if the word was changed, if not
@@ -268,7 +260,7 @@ public class SpellCheckerManager {
 									if (inDict(c))
 										break;
 									else if (!used[6])
-										c = e;
+										c = d;
 								}
 							}
 

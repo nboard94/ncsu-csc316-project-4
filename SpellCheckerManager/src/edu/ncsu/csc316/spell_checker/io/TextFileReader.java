@@ -45,12 +45,6 @@ public class TextFileReader {
 
 		fileScan.close();
 		
-		for(int i = 0; i < words.size(); i++ ) {
-			
-			System.out.println(words.lookUp(i));
-		}
-		
-		System.out.println("**********************************************************************");
 	}
 
 	/**
