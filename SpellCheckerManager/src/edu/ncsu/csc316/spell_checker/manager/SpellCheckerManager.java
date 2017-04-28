@@ -5,7 +5,6 @@ import edu.ncsu.csc316.spell_checker.hash_table.HashTable;
 import edu.ncsu.csc316.spell_checker.io.TextFileReader;
 import edu.ncsu.csc316.spell_checker.list.ArrayBasedList;
 import edu.ncsu.csc316.spell_checker.rules.Rules;
-import edu.ncsu.csc316.spell_checker.sorter.Sorted;
 
 /**
  * The engine of the SpellCheckManager program.
@@ -21,6 +20,8 @@ public class SpellCheckerManager {
 	private ArrayBasedList<String> input;
 	
 	private ArrayBasedList<String> misspelled = new ArrayBasedList<String>();
+	
+	ArrayBasedList<String> mw;
 
 	/** HashTable containing words in the dictionary. */
 	private HashTable hashDictionary;
@@ -258,8 +259,6 @@ public class SpellCheckerManager {
 										break;
 									else if (!used[6])
 										c = d;
-									else
-										c = c.substring(0, c.length() - 1);
 								}
 							}
 
@@ -304,9 +303,9 @@ public class SpellCheckerManager {
 
 		// Sort out misspelled words.
 		//TODO using bubble sort just to rule out Sorted.  Still isn't working.
-		Sorted s = new Sorted();
+		//Sorted s = new Sorted();
 		
-		ArrayBasedList<String> mw = misspelled;
+		mw = misspelled;
 
 		for (int i = 0; i < mw.size(); i++) {
 
@@ -339,5 +338,21 @@ public class SpellCheckerManager {
 			return false;
 		else
 			return hashDictionary.lookUp(c).equals(c);
+	}
+	
+	public String report() {
+		
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("\nSpellCheck Report:\n");
+		sb.append("Number of words in dictionary: " + this.dictionary.size() + "\n");
+		sb.append("Number of words to spellcheck: " + this.input.size() + "\n");
+		sb.append("Number of words misspelled: " + this.mw.size() + "\n");
+		sb.append("Total number of probes: " + this.counter.getTotalProbes() + "\n");
+		sb.append("Total number of lookups: " + this.counter.getTotalLookUps() + "\n");
+		sb.append("Average number of probes per word check: " + (double)( this.input.size() / this.counter.getTotalProbes() ) + "\n");
+		sb.append("Average number of probes per lookup: " + (double)(this.counter.getTotalProbes() / this.counter.getTotalLookUps()) + "\n");
+		
+		return sb.toString();
 	}
 }

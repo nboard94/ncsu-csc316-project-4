@@ -69,6 +69,7 @@ public class SpellCheckerUI {
 					if (testFile.exists()) {
 
 						System.out.println(manager.spellCheck(inputFile));
+						System.out.println(manager.report());
 					} else {
 
 						System.out.println("Invalid input file, please enter a valid filepath.");
