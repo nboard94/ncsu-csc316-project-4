@@ -25,5 +25,7 @@ public class SpellCheckerManagerTest {
 		SpellCheckerManager manager = new SpellCheckerManager(pathToD);
 		
 		assertEquals(misspelled, manager.spellCheck(pathToI));
+		
+		manager.report();
 	}
 }
